@@ -1,3 +1,11 @@
+<?php
+
+    session_start();
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +26,10 @@
 </head>
 
 <body>
-<!--hello-->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light py-2 fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="home.html">E-Paradise</a>
+            <a class="navbar-brand" href="home.php">E-Paradise</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -30,27 +38,50 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="home.html">Home</a>
+                        <a class="nav-link" href="home.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="shop.html">Shop</a>
+                        <a class="nav-link" href="shop.php">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="policy.html">Policy</a>
+                        <a class="nav-link" href="policy.php">Policy</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="signup.html">Sign Up</a>
-                    </li>
+
+                    <?php if(isset($_SESSION['username'])){ ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login/index.php" style="pointer-events: none"><?php echo $_SESSION['username']; ?></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="login/logout.php">Logout</a>
+                        </li>
+
+                    <?php } else{?>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="login/index.php">Login</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="login/register.php">Sign Up</a>
+                        </li>
+
+                    <?php } ?>
+                </ul>
 
             </div>
         </div>
     </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
